@@ -1,0 +1,24 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.header{
+    display: flex;
+    justify-content: space-between;
+    width: 100vw;
+
+    &_title{
+        color: purple;  
+        padding-left: 10px;
+    }
+
+    &_anchor{
+        padding: 10px;
+    }
+
+    &_cartWidget{
+        padding-right: 10px;
+    }
+}
