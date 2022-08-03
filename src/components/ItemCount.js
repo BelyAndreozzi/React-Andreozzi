@@ -20,11 +20,16 @@ function ItemCount({stock, initial, onAdd}) {
 
     return(
         <>
-        <div className="styleItemCountContainer">
-        <Button onClick={minus} variant="outline" color="red" radius="xl" compact> - </Button>
-        <p> {itemCount} </p>
-        <Button onClick={plus} variant="outline" color="green" radius="xl" compact> + </Button>
-        <Button onClick={()=>{ if(stock>0) onAdd(itemCount)}} variant="outline" color="violet" radius="xl"> Agregar al carrito </Button>
+        <div className="ItemCount">
+            <div className="ItemCount_modifiers">
+                <Button onClick={minus} variant="outline" color="red" radius="xl" compact> - </Button>
+                <p> {itemCount} </p>
+                <Button onClick={plus} variant="outline" color="green" radius="xl" compact> + </Button>
+            </div>
+            <div className="ItemCount_addToCart">
+                <Button onClick={()=>{ if(stock>0) onAdd(itemCount)}} variant="outline" color="violet" radius="xl"> Agregar al carrito </Button>
+
+            </div>
         </div>
         </>
     )

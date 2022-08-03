@@ -1,0 +1,16 @@
+.ItemCount{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 200px;
+    padding-bottom: 20px;
+    
+
+    &_modifiers{
+        display: flex;
+        justify-content: space-between;
+        width: 60%;
+        padding: 10px;
+    }
+    
+}
