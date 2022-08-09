@@ -17,6 +17,11 @@ function ItemCount({stock, initial, onAdd}) {
         }
     }
 
+    // Función del item count de anterior entrega. Ignorar por ahora. Estaba en ItemListContainer.
+  /* const onAdd = (quantity) => {
+    alert("Agregaste " + quantity + " productos al carrito.")
+  } */
+
 
     return(
         <>

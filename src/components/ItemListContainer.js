@@ -1,19 +1,32 @@
-import ItemCount from "./ItemCount"
-import { Notification } from '@mantine/core';
-import { IconCheck } from '@tabler/icons';
+import { customFetch } from "../assets/customFetch";
+import { products } from "../stock/products";
+import { useState, useEffect } from "react";
+import { ItemList } from "./ItemList";
+import { Loader } from '@mantine/core';
+
 
 const ItemListContainer = ({ grettings }) => {
   
+  const [allProducts, setAllProducts] = useState([])
+  const [loader, setLoader] = useState(false)
 
-  const onAdd = (quantity) => {
-    alert("Agregaste " + quantity + " productos al carrito.")
-  }
+  useEffect(() => {
+    customFetch(products)
+      .then(data => {
+        setLoader(true)
+        setAllProducts(data)
+      })
+       
+  }, [])
+  
+  
+  
 
   return (
     <>
-      <p>{grettings}</p>
-      <ItemCount initial={1} stock={7} onAdd={onAdd}/>
-      <ItemCount initial={1} stock={0} onAdd={onAdd}/>
+      <h1>{grettings}</h1>
+      {!loader && <Loader color="violet" size="lg" variant="dots"/>}
+      {loader && <ItemList allProducts={allProducts}/>}
     </>
   )
 }
