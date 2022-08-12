@@ -27,24 +27,90 @@ main{
     width: 20%;
     padding: 0.5rem;
     margin: 1rem;
+
+    &_Card{
+        color :#22243b;
+        background-color: #fff;
+        border-radius: 0.5rem;
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        padding: 0.5rem;
+        transition: transform 0.2s;
+        /* cursor: pointer; */ 
+        position: relative;
+        overflow: hidden;
+            &:hover {
+                transform: scale(1.05);
+            }
+    }
+
 }
 
-.item{
+.ItemDetail{
     color :#22243b;
     background-color: #fff;
     border-radius: 0.5rem;
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
     display: flex;
-    flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
+    width: 85%;
+    height: 40rem;
     padding: 0.5rem;
     transition: transform 0.2s;
-    /* cursor: pointer; */ 
     position: relative;
     overflow: hidden;
-    &:hover {
-        transform: scale(1.05);
+
+    &_img{
+        width: 45rem;
+    }
+
+    &_info{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        height: 100%;
+        padding-left: 5px;
+        background-color: #F1D7FF;
+    }
+
+    &_header{
+        height: 20%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    &_dato{
+        color: grey;
+    }
+
+    &_body{
+        height: 30%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        
+
+        &_numbers{
+            display: flex;
+            justify-content: space-evenly;
+        }
+    }
+    
+    &_footer{
+        display: flex;
+        justify-content: space-around;
+
+        &_btn{
+            margin: 10px;
+            width: 40%;
+        }
     }
 }
+
+

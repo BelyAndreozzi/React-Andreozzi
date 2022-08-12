@@ -7,14 +7,21 @@
 .header{
     display: flex;
     justify-content: space-between;
-    width: 100vw;
+    align-items: center;
+    width: 100%;
+    border-radius: 0px;
+    background: linear-gradient(315deg, #5f2486, #702b9f);
+    box-shadow: -11px -11px 26px #5d2485,
+                11px 11px 26px #752ca5;
+    color: white;
+    margin-bottom: 1rem;
 
-    &_title{
-        color: purple;  
+    &_title{  
         padding-left: 10px;
     }
 
     &_anchor{
+        color: white;
         padding: 10px;
     }
 

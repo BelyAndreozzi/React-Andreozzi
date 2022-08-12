@@ -5,7 +5,7 @@ const Item = ({product}) => {
     return(
         <>
         <div className="itemContainer">
-            <div className="item">
+            <div className="itemContainer_Card">
             <Title order={3}>{product.name}</Title>
                 <img src={product.img} alt={product.name} width="150px"/>
                 <div>${product.price}</div>

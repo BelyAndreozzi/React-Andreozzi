@@ -18,9 +18,6 @@ const ItemListContainer = ({ grettings }) => {
       })
        
   }, [])
-  
-  
-  
 
   return (
     <>

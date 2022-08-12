@@ -2,7 +2,7 @@ export const products = [
     {
         id: 1,
         name: "Collar de gato",
-        category: "necklaces",
+        category: "Necklaces",
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         price: 150,
         stock: 20,
@@ -11,7 +11,7 @@ export const products = [
     {
         id: 2,
         name: "Pulsera de gato",
-        category: "bracelets",
+        category: "Bracelets",
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         price: 100,
         stock: 20,
@@ -20,7 +20,7 @@ export const products = [
     {
         id: 3,
         name: "Anillo de gato",
-        category: "rings",
+        category: "Rings",
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         price: 50,
         stock: 20,
