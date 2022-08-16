@@ -1,19 +1,27 @@
-import { Anchor } from "@mantine/core";
+import { Title } from "@mantine/core";
 import CartWidget from "./CartWidget";
-
+import { NavLink } from "react-router-dom"
+import logo from "../assets/imgs/logo.png";
 
 
 function NavBar() {
-    return(
+    return (
         <header className="header">
-                <h1 className="header_title">Joyería</h1>
-                <nav>
-                    <Anchor href="#" color={"dark"} align="center" className="header_anchor">Collares</Anchor>
-                    <Anchor href="#" color={"dark"} className="header_anchor">Anillos</Anchor>
-                    <Anchor href="#" color={"dark"} className="header_anchor">Pulseras</Anchor>
-                </nav>
-                <CartWidget/>
-        </header> 
+            <NavLink to="/">
+                <img src={logo} alt="logo" width="64px" />
+            </NavLink>
+            <nav className="header_nav">
+                <NavLink to="/category/Necklaces">
+                    <Title order={3} underline="false" className="header_link">Collares</Title>
+                </NavLink>
+                <NavLink to="/category/Bracelets">
+                    <Title order={3} className="header_link">Pulseras</Title>
+                </NavLink><NavLink to="/category/Rings">
+                    <Title order={3} className="header_link">Anillos</Title>
+                </NavLink>
+            </nav>
+            <CartWidget />
+        </header>
     )
 }
 

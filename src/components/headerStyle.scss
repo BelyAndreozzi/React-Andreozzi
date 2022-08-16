@@ -4,9 +4,13 @@
     box-sizing: border-box;
 }
 
+a{
+    text-decoration: none;
+}
+
 .header{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     width: 100%;
     border-radius: 0px;
@@ -16,11 +20,15 @@
     color: white;
     margin-bottom: 1rem;
 
+    &_nav{
+        display: flex;
+    }
+
     &_title{  
         padding-left: 10px;
     }
 
-    &_anchor{
+    &_link{
         color: white;
         padding: 10px;
     }
