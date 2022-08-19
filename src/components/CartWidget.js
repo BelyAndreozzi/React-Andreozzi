@@ -1,10 +1,12 @@
+import { NavLink } from "react-router-dom";
+import { IconShoppingCart } from "@tabler/icons";
 
 const CartWidget = () => {
   return (
     <>
-      <span className="material-symbols-outlined header_cartWidget">
-    shopping_cart
-    </span>
+    <NavLink to="/cart">
+      <IconShoppingCart color="black"/>
+    </NavLink>
     </>
   )
 }

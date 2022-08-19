@@ -5,19 +5,25 @@ main{
     
 }
 
+
 .ItemCount{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    width: 200px;
-    padding-bottom: 20px;
+    width: 300px;
+    
     
 
     &_modifiers{
         display: flex;
         justify-content: space-between;
-        width: 60%;
+        width: 40%;
         padding: 10px;
+
+        &_n{
+            display: flex;
+            align-items: center;
+        }
     }
     
 }

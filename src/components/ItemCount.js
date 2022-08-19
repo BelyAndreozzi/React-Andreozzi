@@ -3,24 +3,12 @@ import { Button } from "@mantine/core";
 
 
 function ItemCount({stock, initial, onAdd}) {
-    const [itemCount, setItemCount] = useState(1)
-    
-    const minus = () => {
-        if (itemCount > initial) {
-            setItemCount(itemCount - 1)
-        }
-    }
-    
-    const plus = () => {
-        if (itemCount < stock) {
-            setItemCount(itemCount + 1)
-        }
-    }
 
-    // Función del item count de anterior entrega. Ignorar por ahora. Estaba en ItemListContainer.
-  /* const onAdd = (quantity) => {
-    alert("Agregaste " + quantity + " productos al carrito.")
-  } */
+    const [itemCount, setItemCount] = useState(initial)
+    
+    const minus = () => itemCount > initial && setItemCount(itemCount - 1)
+    
+    const plus = () => itemCount < stock && setItemCount(itemCount + 1)
 
 
     return(
@@ -28,11 +16,11 @@ function ItemCount({stock, initial, onAdd}) {
         <div className="ItemCount">
             <div className="ItemCount_modifiers">
                 <Button onClick={minus} variant="outline" color="red" radius="xl" compact> - </Button>
-                <p> {itemCount} </p>
+                <div className="ItemCount_modifiers_n">{itemCount}</div>
                 <Button onClick={plus} variant="outline" color="green" radius="xl" compact> + </Button>
             </div>
-            <div className="ItemCount_addToCart">
-                <Button onClick={()=>{ if(stock>0) onAdd(itemCount)}} variant="outline" color="violet" radius="xl"> Agregar al carrito </Button>
+            <div>
+            <Button variant="outline" color="violet" onClick={onAdd} className=""> Añadir al carrito </Button>
 
             </div>
         </div>
@@ -40,4 +28,4 @@ function ItemCount({stock, initial, onAdd}) {
     )
 }
 
-export default ItemCount
+export { ItemCount }

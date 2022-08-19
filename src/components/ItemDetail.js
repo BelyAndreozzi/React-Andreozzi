@@ -1,7 +1,16 @@
 import { Button} from '@mantine/core';
+import { ItemCount } from "./ItemCount";
+import { useState } from "react";
+import { NavLink } from "react-router-dom";
 
 const ItemDetail = ({oneProduct}) => {
-    console.log(oneProduct);
+
+    const [added, setAdded] = useState(false)
+
+    const onAdd = () => {
+        setAdded(true)
+    }
+
     return(
         <>
             <section className="ItemDetail">
@@ -21,8 +30,14 @@ const ItemDetail = ({oneProduct}) => {
                         </div>
                     </div>
                     <div className="ItemDetail_footer">
-                        <Button variant="outline" color="violet" className="ItemDetail_footer_btn"> Añadir al carrito </Button>
-                        <Button variant="outline" color="violet" className="ItemDetail_footer_btn"> Comprar ahora </Button>
+                    {
+                        added ? 
+                        <NavLink to="/cart">
+                            <Button variant="outline" color="violet"> Comprar ahora </Button>
+                        </NavLink>
+                        :
+                        <ItemCount initial={oneProduct.initial} stock={oneProduct.stock} onAdd={onAdd}/>
+                    }
                     </div>
                 </div>
             </section>
