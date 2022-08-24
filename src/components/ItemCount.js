@@ -1,22 +1,27 @@
-import { useState } from "react";
+/* import { useState } from "react"; */
 import { Button } from "@mantine/core";
 
 
-function ItemCount({stock, initial, onAdd}) {
+function ItemCount({quantity, setQuantity, stock, onAdd}) {
 
-    const [itemCount, setItemCount] = useState(initial)
-    
-    const minus = () => itemCount > initial && setItemCount(itemCount - 1)
-    
-    const plus = () => itemCount < stock && setItemCount(itemCount + 1)
+    const minus = () => {
+        if (quantity > 1) {
+            setQuantity(quantity - 1)
+        }
+    }
 
+    const plus = () => {
+        if (quantity < stock) {
+            setQuantity(quantity + 1)
+        }
+    }
 
     return(
         <>
         <div className="ItemCount">
             <div className="ItemCount_modifiers">
                 <Button onClick={minus} variant="outline" color="red" radius="xl" compact> - </Button>
-                <div className="ItemCount_modifiers_n">{itemCount}</div>
+                <div className="ItemCount_modifiers_n">{quantity}</div>
                 <Button onClick={plus} variant="outline" color="green" radius="xl" compact> + </Button>
             </div>
             <div>
