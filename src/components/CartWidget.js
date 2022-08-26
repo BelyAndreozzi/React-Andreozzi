@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 import { IconShoppingCart } from "@tabler/icons";
 import { useContext } from "react";
 import { CartContext } from "./CartContext";
-import { Indicator } from "@mantine/core";
+import { ActionIcon, Indicator } from "@mantine/core";
 
 const CartWidget = () => {
 
@@ -13,7 +13,9 @@ const CartWidget = () => {
     <>
     <NavLink to="/cart">
       <Indicator color="grape" label={itemQuantity()} inline size={20} radius="sm" withBorder>
-        <IconShoppingCart color="white" width="40" height="40"/>
+        <ActionIcon color="grape" size="xl" radius="xl" variant="outline">
+          <IconShoppingCart color="white" size={34}/>
+        </ActionIcon>
       </Indicator>
     </NavLink>
     </>

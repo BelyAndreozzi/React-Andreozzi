@@ -9,7 +9,7 @@ const CartContextProvider = ({ children }) => {
 
     const [cart, setCart] = useState([])
 
-    //Revisa si ya está el item en el array (SOME)
+    //Revisa si ya está el item en el array
     const isInCart = (id) => {
         return cart.some(item => item.id === id)
     }
@@ -32,7 +32,7 @@ const CartContextProvider = ({ children }) => {
     }
 
 
-    //Elimina un item del array (FILTER)
+    //Elimina un item del array 
     const removeItem = (id) => {
         return setCart(cart.filter(item => item.id !== id))
     }
