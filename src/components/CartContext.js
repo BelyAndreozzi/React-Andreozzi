@@ -1,5 +1,7 @@
+import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { useState } from "react";
 import { createContext } from "react";
+import { db } from "./firebase";
 
 export const CartContext = createContext([])
 
@@ -8,6 +10,24 @@ const { Provider } = CartContext
 const CartContextProvider = ({ children }) => {
 
     const [cart, setCart] = useState([])
+
+    const [id, setId] = useState()
+
+    const newOrder = async (info) => {
+      await addDoc(collection(db, "orders"), {
+            buyer:{
+                fullname: info.name + ' ' + info.lastName,
+                email: info.email,
+                mobileNumber: info.mobileNumber,
+                saveInfo: info.saveData
+            },
+            products: [...cart],
+            date: serverTimestamp(),
+            total: itemTotalPrice(cart)
+        }).then(res=>setId(res.id));
+
+        return id;
+    }
 
     //Revisa si ya está el item en el array
     const isInCart = (id) => {
@@ -52,7 +72,7 @@ const CartContextProvider = ({ children }) => {
         return cart.reduce((acc, item) => acc += item.quantity * item.price, 0)
     }
 
-    return <Provider value={{ cart, isInCart, addToCart, clearCart, removeItem, itemQuantity, itemTotalPrice }}>{children}</Provider>
+    return <Provider value={{ cart, newOrder, id, isInCart, addToCart, clearCart, removeItem, itemQuantity, itemTotalPrice }}>{children}</Provider>
 
 }
 

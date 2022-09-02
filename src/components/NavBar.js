@@ -12,7 +12,7 @@ function NavBar() {
             </Link>
             <nav className="header_nav">
                 <Link to="/category/Necklaces">
-                    <Title order={3} underline="false" className="header_link">Collares</Title>
+                    <Title order={3} className="header_link">Collares</Title>
                 </Link>
                 <Link to="/category/Bracelets">
                     <Title order={3} className="header_link">Pulseras</Title>
