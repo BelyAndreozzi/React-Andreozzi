@@ -1,7 +1,7 @@
 import { useContext } from "react"
 import { CartContext } from "./CartContext"
 import { Checkout } from "./Checkout"
-import { ActionIcon, Button } from '@mantine/core';
+import { ActionIcon, Button, Tooltip } from '@mantine/core';
 import { IconShoppingCartX, IconTrash } from '@tabler/icons';
 import { Link } from "react-router-dom";
 
@@ -15,9 +15,11 @@ const Cart = () => {
         <div className="cart_container_top">
           <div className="cart_header">
             <h3 className="cart_header_title">Carrito de compras</h3>
-            <ActionIcon color="red" size="xl" radius="xl" variant="outline" onClick={() => clearCart()}>
-              <IconShoppingCartX size={34} />
-            </ActionIcon>
+            <Tooltip label="Vaciar carrito" color="grape" withArrow position="bottom">
+              <ActionIcon color="red" size="xl" radius="xl" variant="outline" onClick={() => clearCart()}>
+                <IconShoppingCartX size={34} />
+              </ActionIcon>
+            </Tooltip>
           </div>
         </div>
         <div className="cart_container_bottom">
@@ -35,9 +37,11 @@ const Cart = () => {
                     </div>
                     <div className="cart_card_infoR">
                       <div className="cart_card_infoR_price">{element.quantity} x ${element.price}</div>
-                      <ActionIcon color="red" radius="xl" variant="light" className="cart_card_infoR_remove" onClick={() => removeItem(element.id)}>
-                        <IconTrash size={36} />
-                      </ActionIcon>
+                      <Tooltip label="Eliminar producto" color="grape" withArrow position="bottom">
+                        <ActionIcon color="red" radius="xl" variant="light" className="cart_card_infoR_remove" onClick={() => removeItem(element.id)}>
+                          <IconTrash size={36} />
+                        </ActionIcon>
+                      </Tooltip>
                     </div>
                   </div>
                 </div>

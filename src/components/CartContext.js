@@ -11,11 +11,11 @@ const CartContextProvider = ({ children }) => {
 
     const [cart, setCart] = useState([])
 
-    const [id, setId] = useState()
+
 
     const newOrder = async (info) => {
-      await addDoc(collection(db, "orders"), {
-            buyer:{
+        const docRef = await addDoc(collection(db, "orders"), {
+            buyer: {
                 fullname: info.name + ' ' + info.lastName,
                 email: info.email,
                 mobileNumber: info.mobileNumber,
@@ -24,12 +24,11 @@ const CartContextProvider = ({ children }) => {
             products: [...cart],
             date: serverTimestamp(),
             total: itemTotalPrice(cart)
-        }).then(res=>setId(res.id));
+        })
 
-        return id;
+        return docRef.id;
     }
 
-    //Revisa si ya está el item en el array
     const isInCart = (id) => {
         return cart.some(item => item.id === id)
     }
@@ -51,28 +50,23 @@ const CartContextProvider = ({ children }) => {
         }
     }
 
-
-    //Elimina un item del array 
     const removeItem = (id) => {
         return setCart(cart.filter(item => item.id !== id))
     }
 
-    //resetea el cart 
     const clearCart = () => {
         return setCart([])
     }
 
-    // Cantidad de unidades en el cart 
     const itemQuantity = () => {
         return cart.reduce((acc, item) => acc += item.quantity, 0)
     }
 
-    //Precio total de la compra
     const itemTotalPrice = () => {
         return cart.reduce((acc, item) => acc += item.quantity * item.price, 0)
     }
 
-    return <Provider value={{ cart, newOrder, id, isInCart, addToCart, clearCart, removeItem, itemQuantity, itemTotalPrice }}>{children}</Provider>
+    return <Provider value={{ cart, newOrder, isInCart, addToCart, clearCart, removeItem, itemQuantity, itemTotalPrice }}>{children}</Provider>
 
 }
 

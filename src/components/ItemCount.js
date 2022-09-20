@@ -29,7 +29,8 @@ function ItemCount({ quantity, setQuantity, stock, onAdd }) {
                         onAdd()
                         showNotification({
                             title: 'Producto agregado al carrito',
-                            icon: <IconShoppingCartPlus/>,
+                            message: '',
+                            icon: <IconShoppingCartPlus />,
                             color: "grape",
                             radius: "xl"
                         })

@@ -4,11 +4,31 @@ import { Modal, Button, Group, TextInput, Checkbox, Box, NumberInput } from '@ma
 import { IconCheck } from "@tabler/icons";
 import { showNotification } from '@mantine/notifications';
 import { CartContext } from "./CartContext"
+import { useNavigate } from 'react-router-dom';
 
 function Checkout() {
     const [opened, setOpened] = useState(false)
 
-    const { newOrder, id } = useContext(CartContext)
+    const { newOrder, clearCart } = useContext(CartContext)
+
+    const navigate = useNavigate()
+
+    const checkoutExit = async (values)=>{
+
+        let id = await newOrder(values);
+    
+        navigate('/')
+        
+        showNotification({
+                title: '¡Compra realizada con éxito!',
+                message: `El id de tu compra es: ${id}`,
+                icon: <IconCheck/>,
+                color: "grape",
+                radius: "xl",
+        });
+    
+        clearCart()
+      }
 
     const form = useForm({
         initialValues: {
@@ -23,7 +43,7 @@ function Checkout() {
             name: (value) => (value.length < 2 ? 'Tu nombre debe tener al menos dos letras.' : null),
             lastName: (value) => (value.length < 2 ? 'Tu apellido debe tener al menos dos letras.' : null),
             email: (value) => (/^\S+@\S+$/.test(value) ? null : 'El es email inválido.'),
-            mobileNumber: (value) => (value.length < 8 ? 'El número de teléfono inválido.' : null), /* ARREGLAR VALIDACION */   
+            mobileNumber: (value) => (/\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})/.test(value) ? null : 'El número de teléfono inválido.'),
         },
     });
 
@@ -36,7 +56,7 @@ function Checkout() {
                 title="Completá los datos."
             >
                 <Box sx={{ maxWidth: 300 }} mx="auto">
-                    <form onSubmit={form.onSubmit((values) => {newOrder(values)})}>
+                    <form onSubmit={form.onSubmit((values) => {checkoutExit(values)})}>
                         <TextInput label="Nombre" placeholder="Nombre" {...form.getInputProps('name')} />
                         <TextInput label="Apellido" placeholder="Apellido" {...form.getInputProps('lastName')} />
                         <TextInput
@@ -53,15 +73,7 @@ function Checkout() {
                         />
 
                         <Group position="right" mt="md">
-                            <Button color="grape" type="submit" onClick={() => {
-                        showNotification({
-                            title: '¡Compra realizada con éxito!',
-                            message: `El id de tu compra es: ${id}`,
-                            icon: <IconCheck/>,
-                            color: "grape",
-                            radius: "xl"
-                        })
-                    }} >Confirmar compra</Button>
+                            <Button color="grape" type="submit">Confirmar compra</Button>
                         </Group>
 
                     </form>
